@@ -191,7 +191,8 @@ class MinesweeperAI():
         self.moves_made.add(cell)
         mark_safe(cell)
         surr_mines = nearby_mines(self)
-        for
+        for (i,j) in surr_mines
+            
 
         raise NotImplementedError
 
