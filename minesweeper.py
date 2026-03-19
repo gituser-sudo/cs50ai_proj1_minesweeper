@@ -188,7 +188,11 @@ class MinesweeperAI():
                if they can be inferred from existing knowledge
         """
 
+        self.moves_made.add(cell)
         mark_safe(cell)
+        surr_mines = nearby_mines(self)
+        for
+
         raise NotImplementedError
 
     def make_safe_move(self):
