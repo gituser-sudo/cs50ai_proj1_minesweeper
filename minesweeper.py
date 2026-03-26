@@ -206,6 +206,7 @@ class MinesweeperAI():
 
         self.moves_made.add(cell)
         mark_safe(cell)
+        sentence = new Sentence(cell, )
         surr_mines = nearby_mines(self)
         for (i,j) in surr_mines
 
