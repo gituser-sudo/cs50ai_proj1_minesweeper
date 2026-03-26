@@ -206,7 +206,8 @@ class MinesweeperAI():
 
         self.moves_made.add(cell)
         mark_safe(cell)
-        sentence = new Sentence(cell, )
+        cells = find_adjacent_cells(cell)
+        sentence = new Sentence(cells, )
         surr_mines = nearby_mines(self)
         for (i,j) in surr_mines
 
@@ -246,6 +247,7 @@ class MinesweeperAI():
 
     def find_adjacent_cells(cell):
         # Loop over all cells within one row and column
+        adjacent_cells = Set()
         for i in range(cell[0] - 1, cell[0] + 2):
             for j in range(cell[1] - 1, cell[1] + 2):
 
@@ -255,5 +257,4 @@ class MinesweeperAI():
 
                 # Update count if cell in bounds and is mine
                 if 0 <= i < self.height and 0 <= j < self.width:
-                    if self.board[i][j]:
-                        count += 1
+                    adjacent_cells.add(i,j)
