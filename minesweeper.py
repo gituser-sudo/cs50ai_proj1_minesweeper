@@ -237,5 +237,5 @@ class MinesweeperAI():
 
         for i in range(self.height):
             for j in range(self.width):
-                row.append(False)
-            self.board.append(row)
+                if(!self.board[i][j])
+                   return i,j
