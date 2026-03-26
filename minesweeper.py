@@ -208,6 +208,8 @@ class MinesweeperAI():
         mark_safe(cell)
         cells = find_adjacent_cells(cell)
         sentence = new Sentence(cells, nearby_mines(cell))
+        self.knowledge.add(sentence)
+        
 
 
 
