@@ -119,7 +119,7 @@ class Sentence():
         """
         known_safe_cells = set()
         for i, j in self.cells
-            if( i,j in self.known_mines)
+            if( i,j in self.known_safes)
                 known_safe_cells.add(i, j)
 
         return known_mines_cells
