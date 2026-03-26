@@ -105,15 +105,24 @@ class Sentence():
         """
         Returns the set of all cells in self.cells known to be mines.
         """
-        return self.mines
-        raise NotImplementedError
+        known_mines_cells = set()
+        for i, j in self.cells
+            if( i,j in self.mines_found)
+                known_mines_cells.add(i, j)
+
+        return known_mines_cells
+
 
     def known_safes(self):
         """
         Returns the set of all cells in self.cells known to be safe.
         """
-        return self.safes
-        raise NotImplementedError
+        known_safe_cells = set()
+        for i, j in self.cells
+            if( i,j in self.known_mines)
+                known_safe_cells.add(i, j)
+
+        return known_mines_cells
 
     def mark_mine(self, cell):
         """
@@ -192,7 +201,7 @@ class MinesweeperAI():
         mark_safe(cell)
         surr_mines = nearby_mines(self)
         for (i,j) in surr_mines
-            
+
 
         raise NotImplementedError
 
