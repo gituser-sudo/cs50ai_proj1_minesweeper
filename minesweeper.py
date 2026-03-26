@@ -235,4 +235,7 @@ class MinesweeperAI():
             2) are not known to be mines
         """
 
-        for cell in self.
+        for i in range(self.height):
+            for j in range(self.width):
+                row.append(False)
+            self.board.append(row)
