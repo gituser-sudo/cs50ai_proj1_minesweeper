@@ -122,7 +122,7 @@ class Sentence():
             if( i,j in self.known_safes)
                 known_safe_cells.add(i, j)
 
-        return known_mines_cells
+        return known_safe_cells
 
     def mark_mine(self, cell):
         """
