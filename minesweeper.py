@@ -134,6 +134,8 @@ class Sentence():
                 sentence.remove(cell)
                 sentence.count = sentence.count - 1
 
+        self.mines_found.add(cell)
+
 
     def mark_safe(self, cell):
         """
@@ -143,6 +145,8 @@ class Sentence():
         for sentence in self.knowledge
             if(cell in sentence.cells)
                 sentence.remove(cell)
+
+        self.safes_found.add(cell)
 
 
 class MinesweeperAI():
