@@ -208,11 +208,9 @@ class MinesweeperAI():
         mark_safe(cell)
         cells = find_adjacent_cells(cell)
         sentence = new Sentence(cells, nearby_mines(cell))
-        surr_mines = nearby_mines(self)
-        for (i,j) in surr_mines
 
 
-        raise NotImplementedError
+
 
     def make_safe_move(self):
         """
