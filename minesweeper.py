@@ -209,7 +209,9 @@ class MinesweeperAI():
         cells = find_adjacent_cells(cell)
         sentence = new Sentence(cells, nearby_mines(cell))
         self.knowledge.add(sentence)
-        
+
+        for sentence1 in self.knowledge
+            if(sentence.cells in )
 
 
 
