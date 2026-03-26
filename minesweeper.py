@@ -225,7 +225,7 @@ class MinesweeperAI():
             if cell not in self.moves_made
                 return cell
 
-        
+
 
     def make_random_move(self):
         """
@@ -234,4 +234,5 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
-        raise NotImplementedError
+
+        for cell in self.
