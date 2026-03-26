@@ -225,7 +225,7 @@ class MinesweeperAI():
             if cell not in self.moves_made
                 return cell
 
-
+        return None
 
     def make_random_move(self):
         """
