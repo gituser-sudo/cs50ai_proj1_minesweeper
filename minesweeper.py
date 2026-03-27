@@ -94,7 +94,7 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
-        self.sentence
+        self.sentence_list = set()
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
