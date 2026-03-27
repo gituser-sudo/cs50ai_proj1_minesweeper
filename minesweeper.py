@@ -204,8 +204,8 @@ class MinesweeperAI():
         final_cells = set()
         for cell in cells:
             if cell in self.mines:
-                  count = count - 1
-                  continue
+                count = count - 1
+                continue
             if cell in self.safes:
                 continue
             final_cells.append(cell)
