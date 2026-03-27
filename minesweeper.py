@@ -134,10 +134,10 @@ class Sentence():
         """
 
 
-        for sentence in self.knowledge:
-            if cell in sentence.cells:
-                sentence.remove(cell)
-                sentence.count = sentence.count - 1
+
+        if cell in sentence.cells:
+            sentence.remove(cell)
+            sentence.count = sentence.count - 1
 
 
         self.known_mines.add(cell)
@@ -148,9 +148,9 @@ class Sentence():
         Updates internal knowledge representation given the fact that
         a cell is known to be safe.
         """
-        for sentence in self.knowledge:
-            if cell in sentence.cells:
-                sentence.remove(cell)
+
+        if cell in sentence.cells:
+            sentence.remove(cell)
 
 
         self.known_safes.add(cell)
