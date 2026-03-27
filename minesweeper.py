@@ -107,7 +107,7 @@ class Sentence():
         """
         known_mines_cells = set()
         for i, j in self.cells:
-            if (i, j) in super.mines_found:
+            if (i, j) in self.mines_found:
                 known_mines_cells.add((i, j))
 
         return known_mines_cells
@@ -119,7 +119,7 @@ class Sentence():
         """
         known_safe_cells = set()
         for i, j in self.cells:
-            if (i, j) in super.known_safes:
+            if (i, j) in self.known_safes:
                 known_safe_cells.add((i, j))
 
         return known_safe_cells
