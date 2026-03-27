@@ -204,12 +204,13 @@ class MinesweeperAI():
         final_cells = set()
         for cell in cells:
             if cell in self.mines:
-                cells.remove(cell)
-                count = count - 1
+                  count = count - 1
+                  continue
             if cell in self.safes:
-                cells.remove(cell)
+                continue
+            final_cells.append(cell)
 
-        sentence = Sentence(cells, count)
+        sentence = Sentence(final_cells, count)
         self.knowledge.append(sentence)
 
         for sentence1 in self.knowledge:
