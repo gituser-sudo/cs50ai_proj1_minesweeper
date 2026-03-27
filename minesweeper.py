@@ -208,7 +208,7 @@ class MinesweeperAI():
                 continue
             if cell in self.safes:
                 continue
-            final_cells.append(cell)
+            final_cells.add(cell)
 
         sentence = Sentence(final_cells, count)
         self.knowledge.append(sentence)
