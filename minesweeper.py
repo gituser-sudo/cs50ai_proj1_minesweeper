@@ -133,10 +133,9 @@ class Sentence():
         a cell is known to be a mine.
         """
 
-        for sentence in self.knowledge:
-            if cell in sentence.cells:
-                sentence.cells.remove(cell)
-                sentence.count = sentence.count - 1
+        if cell in sentence.cells:
+            sentence.cells.remove(cell)
+            sentence.count = sentence.count - 1
 
         self.known_mines.add(cell)
 
@@ -147,9 +146,9 @@ class Sentence():
         a cell is known to be safe.
         """
 
-        for sentence in self.knowledge:
-            if cell in sentence.cells:
-                sentence.cells.remove(cell)
+
+        if cell in sentence.cells:
+            sentence.cells.remove(cell)
 
         self.known_safes.add(cell)
 
