@@ -135,7 +135,7 @@ class Sentence():
 
         if cell in self.cells:
             self.cells.remove(cell)
-            self.count = sentence.count - 1
+            self.count = self.count - 1
 
         self.known_mines.add(cell)
 
