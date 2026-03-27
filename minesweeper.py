@@ -226,7 +226,7 @@ class MinesweeperAI():
         """
         Returns a safe cell to choose on the Minesweeper board.
         """
-        for cell in self.safes_found:
+        for cell in self.safes:
             if cell not in self.moves_made:
                 return cell
 
