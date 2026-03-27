@@ -201,6 +201,7 @@ class MinesweeperAI():
         self.moves_made.add(cell)
         self.mark_safe(cell)
         cells = self.find_adjacent_cells(cell)
+        final_cells = set()
         for cell in cells:
             if cell in self.mines:
                 cells.remove(cell)
