@@ -239,7 +239,7 @@ class MinesweeperAI():
 
         for i in range(self.height):
             for j in range(self.width):
-                if (not self.board[i][j] and (i, j) not in self.moves_made):
+                if ((i,j) not in self.moves_made and (i,j) not in self.mines):
                     return (i, j)
 
         return None
