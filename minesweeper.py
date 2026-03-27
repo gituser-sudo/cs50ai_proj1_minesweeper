@@ -206,11 +206,13 @@ class MinesweeperAI():
         self.knowledge.add(sentence)
 
         for sentence1 in self.knowledge:
-           for sentence2 in self.knowledge:
-            if (sentence1.cells < sentence2.cells):
-                newSentence = Sentence(sentence2.cells - sentence1.cells, sentence2.count - sentence1.count)
-                knowledge.add(newSentence)
-
+            for sentence2 in self.knowledge:
+                if (sentence1.cells < sentence2.cells):
+                    newSentence = Sentence(
+                        sentence2.cells - sentence1.cells,
+                        sentence2.count - sentence1.count
+                    )
+                    self.knowledge.add(newSentence)
 
     def make_safe_move(self):
         """
@@ -221,7 +223,6 @@ class MinesweeperAI():
                 return cell
 
         return None
-
 
     def make_random_move(self):
         """
@@ -234,7 +235,6 @@ class MinesweeperAI():
                     return (i, j)
 
         return None
-
 
     def find_adjacent_cells(self, cell):
         # Loop over all cells within one row and column
