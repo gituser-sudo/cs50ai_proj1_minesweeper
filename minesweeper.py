@@ -94,7 +94,7 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
-        self.sentence_list = set()
+        self.sentence_cells = []
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
@@ -137,6 +137,7 @@ class Sentence():
             if cell in sentence.cells:
                 sentence.remove(cell)
                 sentence.count = sentence.count - 1
+                this.sentence_cells[cell] = 'M'
 
         self.mines_found.add(cell)
 
@@ -149,6 +150,7 @@ class Sentence():
         for sentence in self.knowledge:
             if cell in sentence.cells:
                 sentence.remove(cell)
+                this.sentence_cells[cell] = 'S'
 
         self.safes_found.add(cell)
 
