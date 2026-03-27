@@ -151,7 +151,7 @@ class Sentence():
         for sentence in self.knowledge:
             if cell in sentence.cells:
                 sentence.remove(cell)
-                this.sentence_cells[cell] = 'S'
+  
 
         self.known_safes.add(cell)
 
