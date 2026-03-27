@@ -106,9 +106,9 @@ class Sentence():
         Returns the set of all cells in self.cells known to be mines.
         """
         known_mines_cells = set()
-        for i, j in self.cells
-            if( i,j in self.mines_found)
-                known_mines_cells.add(i, j)
+        for i, j in self.cells:
+            if (i, j) in super.mines_found:
+                known_mines_cells.add((i, j))
 
         return known_mines_cells
 
@@ -118,19 +118,20 @@ class Sentence():
         Returns the set of all cells in self.cells known to be safe.
         """
         known_safe_cells = set()
-        for i, j in self.cells
-            if( i,j in self.known_safes)
-                known_safe_cells.add(i, j)
+        for i, j in self.cells:
+            if (i, j) in super.known_safes:
+                known_safe_cells.add((i, j))
 
         return known_safe_cells
+
 
     def mark_mine(self, cell):
         """
         Updates internal knowledge representation given the fact that
         a cell is known to be a mine.
         """
-        for sentence in self.knowledge
-            if(cell in sentence.cells)
+        for sentence in self.knowledge:
+            if cell in sentence.cells:
                 sentence.remove(cell)
                 sentence.count = sentence.count - 1
 
@@ -142,8 +143,8 @@ class Sentence():
         Updates internal knowledge representation given the fact that
         a cell is known to be safe.
         """
-        for sentence in self.knowledge
-            if(cell in sentence.cells)
+        for sentence in self.knowledge:
+            if cell in sentence.cells:
                 sentence.remove(cell)
 
         self.safes_found.add(cell)
@@ -192,64 +193,48 @@ class MinesweeperAI():
         """
         Called when the Minesweeper board tells us, for a given
         safe cell, how many neighboring cells have mines in them.
-
-        This function should:
-            1) mark the cell as a move that has been made
-            2) mark the cell as safe
-            3) add a new sentence to the AI's knowledge base
-               based on the value of `cell` and `count`
-            4) mark any additional cells as safe or as mines
-               if it can be concluded based on the AI's knowledge base
-            5) add any new sentences to the AI's knowledge base
-               if they can be inferred from existing knowledge
         """
 
         self.moves_made.add(cell)
-        mark_safe(cell)
-        cells = find_adjacent_cells(cell)
-        sentence = new Sentence(cells, nearby_mines(cell))
+        self.mark_safe(cell)
+        cells = self.find_adjacent_cells(cell)
+        sentence = Sentence(cells, count)
         self.knowledge.add(sentence)
 
-        for sentence1 in self.knowledge
-            if(sentence.cells in )
-
-
+        for sentence1 in self.knowledge:
+           for sentence2 in self.knowledge:
+            if (sentence1.cells < sentence2.cells):
+                newSentence = Sentence(sentence2.cells - sentence1.cells, sentence2.count - sentence1.count)
+                knowledge.add(newSentence)
 
 
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
-        The move must be known to be safe, and not already a move
-        that has been made.
-
-        This function may use the knowledge in self.mines, self.safes
-        and self.moves_made, but should not modify any of those values.
         """
-        for cell in self.safes_found
-            if cell not in self.moves_made
+        for cell in self.safes_found:
+            if cell not in self.moves_made:
                 return cell
 
         return None
 
+
     def make_random_move(self):
         """
         Returns a move to make on the Minesweeper board.
-        Should choose randomly among cells that:
-            1) have not already been chosen, and
-            2) are not known to be mines
         """
 
         for i in range(self.height):
             for j in range(self.width):
-                if(!self.board[i][j] && i,j not in self.moves_made)
-                   return i,j
-
+                if (not self.board[i][j] and (i, j) not in self.moves_made):
+                    return (i, j)
 
         return None
 
-    def find_adjacent_cells(cell):
+
+    def find_adjacent_cells(self, cell):
         # Loop over all cells within one row and column
-        adjacent_cells = Set()
+        adjacent_cells = set()
         for i in range(cell[0] - 1, cell[0] + 2):
             for j in range(cell[1] - 1, cell[1] + 2):
 
@@ -257,6 +242,8 @@ class MinesweeperAI():
                 if (i, j) == cell:
                     continue
 
-                # Update count if cell in bounds and is mine
+                # Update count if cell in bounds
                 if 0 <= i < self.height and 0 <= j < self.width:
-                    adjacent_cells.add(i,j)
+                    adjacent_cells.add((i, j))
+
+        return adjacent_cells
