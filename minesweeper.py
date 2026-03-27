@@ -220,7 +220,8 @@ class MinesweeperAI():
                         sentence2.cells - sentence1.cells,
                         sentence2.count - sentence1.count
                     )
-                    self.knowledge.append(newSentence)
+                    if(newSentence is not empty):
+                        self.knowledge.append(newSentence)
 
     def make_safe_move(self):
         """
