@@ -202,7 +202,7 @@ class MinesweeperAI():
         self.mark_safe(cell)
         cells = self.find_adjacent_cells(cell)
         sentence = Sentence(cells, count)
-        self.knowledge.add(sentence)
+        self.knowledge.append(sentence)
 
         for sentence1 in self.knowledge:
             for sentence2 in self.knowledge:
@@ -211,7 +211,7 @@ class MinesweeperAI():
                         sentence2.cells - sentence1.cells,
                         sentence2.count - sentence1.count
                     )
-                    self.knowledge.add(newSentence)
+                    self.knowledge.append(newSentence)
 
     def make_safe_move(self):
         """
