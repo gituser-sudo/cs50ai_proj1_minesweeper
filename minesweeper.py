@@ -215,7 +215,7 @@ class MinesweeperAI():
 
         for sentence1 in self.knowledge:
             for sentence2 in self.knowledge:
-                if (sentence1.cells < sentence2.cells):
+                if sentence1.cells.issubset(sentence2.cells):
                     newSentence = Sentence(
                         sentence2.cells - sentence1.cells,
                         sentence2.count - sentence1.count
