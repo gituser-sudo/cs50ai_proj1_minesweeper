@@ -109,7 +109,7 @@ class Sentence():
         """
         known_mines_cells = set()
         for i, j in self.cells:
-            if (i, j) in self.mines_found:
+            if (i, j) in self.known_mines:
                 known_mines_cells.add((i, j))
 
         return known_mines_cells
@@ -138,9 +138,9 @@ class Sentence():
             if cell in sentence.cells:
                 sentence.remove(cell)
                 sentence.count = sentence.count - 1
-                this.sentence_cells[cell] = 'M'
 
-        self.mines_found.add(cell)
+
+        self.known_mines.add(cell)
 
 
     def mark_safe(self, cell):
@@ -153,7 +153,7 @@ class Sentence():
                 sentence.remove(cell)
                 this.sentence_cells[cell] = 'S'
 
-        self.safes_found.add(cell)
+        self.known_safes.add(cell)
 
 
 class MinesweeperAI():
