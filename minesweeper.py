@@ -201,6 +201,13 @@ class MinesweeperAI():
         self.moves_made.add(cell)
         self.mark_safe(cell)
         cells = self.find_adjacent_cells(cell)
+        for cell in cells:
+            if cell in self.mines:
+                cells.remove(cell)
+                count = count - 1
+            if cell in self.safes:
+                cells.remove(cell)
+
         sentence = Sentence(cells, count)
         self.knowledge.append(sentence)
 
