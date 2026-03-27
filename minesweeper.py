@@ -94,6 +94,7 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
+        self.sentence
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
@@ -131,7 +132,7 @@ class Sentence():
         a cell is known to be a mine.
         """
 
-        
+
         for sentence in self.knowledge:
             if cell in sentence.cells:
                 sentence.remove(cell)
