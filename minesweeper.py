@@ -252,6 +252,53 @@ class MinesweeperAI():
         self.knowledge = new_knowledge
 
 
+    def updateKnowledgeTillSteadyState(self)
+                new_sentences = []
+        change_happened = False
+
+        for i, sentence1 in enumerate(self.knowledge):
+            for j, sentence2 in enumerate(self.knowledge):
+                if i == j:
+                    continue
+
+                if sentence1.cells and sentence1.cells < sentence2.cells:
+                    new_sentence = Sentence(
+                        sentence2.cells - sentence1.cells,
+                        sentence2.count - sentence1.count
+                    )
+
+                    if new_sentence.cells and new_sentence not in self.knowledge and new_sentence not in new_sentences:
+                        new_sentences.append(new_sentence)
+                        change_happened = True;
+
+
+        self.knowledge.extend(new_sentences)
+
+        new_knowledge = []
+
+        for sentence in self.knowledge:
+            if len(sentence.cells) == sentence.count:
+                # All cells are mines
+                for cell in sentence.cells.copy():
+                    self.mark_mine(cell)
+                change_happened = True
+
+            elif sentence.count == 0:
+                # All cells are safe
+                for cell in sentence.cells.copy():
+                    self.mark_safe(cell)
+                change_happened = True
+
+            else:
+                # Keep only useful sentences
+                new_knowledge.append(sentence)
+
+        self.knowledge = new_knowledge
+
+        return change_happened
+
+
+
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
