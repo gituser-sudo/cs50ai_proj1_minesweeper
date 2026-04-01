@@ -107,25 +107,23 @@ class Sentence():
         """
         Returns the set of all cells in self.cells known to be mines.
         """
-        known_mines_cells = set()
-        for i, j in self.cells:
-            if (i, j) in self.known_mines:
-                known_mines_cells.add((i, j))
+        # known_mines_cells = set()
+        # for i, j in self.cells:
+        #     if (i, j) in self.known_mines:
+        #         known_mines_cells.add((i, j))
 
-        return known_mines_cells
-
+        return self.known_mines
 
     def known_safes(self):
         """
         Returns the set of all cells in self.cells known to be safe.
         """
-        known_safe_cells = set()
-        for i, j in self.cells:
-            if (i, j) in self.known_safes:
-                known_safe_cells.add((i, j))
+        # known_safe_cells = set()
+        # for i, j in self.cells:
+        #     if (i, j) in self.known_safes:
+        #         known_safe_cells.add((i, j))
 
-        return known_safe_cells
-
+        return self.known_safes
 
     def mark_mine(self, cell):
         """
@@ -137,7 +135,6 @@ class Sentence():
             self.count = self.count - 1
 
         self.known_mines.add(cell)
-
 
     def mark_safe(self, cell):
         """
@@ -211,48 +208,9 @@ class MinesweeperAI():
         sentence = Sentence(final_cells, count)
         self.knowledge.append(sentence)
 
-        new_sentences = []
-
-        for i, sentence1 in enumerate(self.knowledge):
-            for j, sentence2 in enumerate(self.knowledge):
-                if i == j:
-                    continue
-
-                if sentence1.cells and sentence1.cells < sentence2.cells:
-                    new_sentence = Sentence(
-                        sentence2.cells - sentence1.cells,
-                        sentence2.count - sentence1.count
-                    )
-
-                    if new_sentence.cells and new_sentence not in self.knowledge and new_sentence not in new_sentences:
-                        new_sentences.append(new_sentence)
-
-
-        self.knowledge.extend(new_sentences)
-
-        new_knowledge = []
-
-        for sentence in self.knowledge:
-            if len(sentence.cells) == sentence.count:
-                # All cells are mines
-                for cell in sentence.cells.copy():
-                    self.mark_mine(cell)
-
-            elif sentence.count == 0:
-                # All cells are safe
-                for cell in sentence.cells.copy():
-                    self.mark_safe(cell)
-
-            else:
-                # Keep only useful sentences
-                new_knowledge.append(sentence)
-
-        self.knowledge = new_knowledge
-
         change_happened = True
         while change_happened:
             change_happened = self.updateKnowledgeTillSteadyState()
-
 
     def updateKnowledgeTillSteadyState(self):
         new_sentences = []
@@ -302,8 +260,6 @@ class MinesweeperAI():
 
         return change_happened
 
-
-
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
@@ -321,7 +277,7 @@ class MinesweeperAI():
 
         for i in range(self.height):
             for j in range(self.width):
-                if ((i,j) not in self.moves_made and (i,j) not in self.mines):
+                if ((i, j) not in self.moves_made and (i, j) not in self.mines):
                     return (i, j)
 
         return None
