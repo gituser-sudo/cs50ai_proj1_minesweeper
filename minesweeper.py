@@ -213,15 +213,23 @@ class MinesweeperAI():
         sentence = Sentence(final_cells, count)
         self.knowledge.append(sentence)
 
-        for sentence1 in self.knowledge:
-            for sentence2 in self.knowledge:
-                if sentence1.cells.issubset(sentence2.cells):
-                    newSentence = Sentence(
+        new_sentences = []
+
+        for i, sentence1 in enumerate(self.knowledge):
+            for j, sentence2 in enumerate(self.knowledge):
+                if i == j:
+                    continue
+
+                if sentence1.cells and sentence1.cells < sentence2.cells:
+                    new_sentence = Sentence(
                         sentence2.cells - sentence1.cells,
                         sentence2.count - sentence1.count
                     )
-                    if newSentence is not None:
-                        self.knowledge.append(newSentence)
+
+                    if new_sentence.cells and new_sentence not in self.knowledge and new_sentence not in new_sentences:
+                        new_sentences.append(new_sentence)
+
+        self.knowledge.extend(new_sentences)
 
     def make_safe_move(self):
         """
