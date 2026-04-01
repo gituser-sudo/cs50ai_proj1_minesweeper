@@ -232,21 +232,24 @@ class MinesweeperAI():
 
         self.knowledge.extend(new_sentences)
 
-        # Check all sentences:
-        # If number of cells equals number of mines, mark all as mines
+        new_knowledge = []
+
         for sentence in self.knowledge:
             if len(sentence.cells) == sentence.count:
+                # All cells are mines
                 for cell in sentence.cells.copy():
                     self.mark_mine(cell)
-             self.knowledge.remove(sentence)
 
-        # If number of mines is 0, mark all as safe
-        for sentence in self.knowledge:
-            if sentence.count == 0:
+            elif sentence.count == 0:
+                # All cells are safe
                 for cell in sentence.cells.copy():
                     self.mark_safe(cell)
 
-             self.knowledge.remove(sentence)
+            else:
+                # Keep only useful sentences
+                new_knowledge.append(sentence)
+
+        self.knowledge = new_knowledge
 
 
     def make_safe_move(self):
