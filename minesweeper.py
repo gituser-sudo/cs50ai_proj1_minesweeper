@@ -252,12 +252,12 @@ class MinesweeperAI():
         self.knowledge = new_knowledge
 
         change_happened = True
-        while change_happeneed:
-            updateKnowledgeTillSteadyState
+        while change_happened:
+            change_happened = self.updateKnowledgeTillSteadyState()
 
 
-    def boolean updateKnowledgeTillSteadyState(self)
-                new_sentences = []
+    def updateKnowledgeTillSteadyState(self):
+        new_sentences = []
         change_happened = False
 
         for i, sentence1 in enumerate(self.knowledge):
@@ -271,10 +271,13 @@ class MinesweeperAI():
                         sentence2.count - sentence1.count
                     )
 
-                    if new_sentence.cells and new_sentence not in self.knowledge and new_sentence not in new_sentences:
+                    if (
+                        new_sentence.cells
+                        and new_sentence not in self.knowledge
+                        and new_sentence not in new_sentences
+                    ):
                         new_sentences.append(new_sentence)
-                        change_happened = True;
-
+                        change_happened = True
 
         self.knowledge.extend(new_sentences)
 
