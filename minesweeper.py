@@ -235,7 +235,18 @@ class MinesweeperAI():
         new_knowledge = []
 
         for sentence in self.knowledge:
-            if len(sentence.cells) != 0:
+            if len(sentence.cells) == sentence.count:
+                # All cells are mines
+                for cell in sentence.cells.copy():
+                    self.mark_mine(cell)
+
+            elif sentence.count == 0:
+                # All cells are safe
+                for cell in sentence.cells.copy():
+                    self.mark_safe(cell)
+
+            else:
+                # Keep only useful sentences
                 new_knowledge.append(sentence)
 
         self.knowledge = new_knowledge
