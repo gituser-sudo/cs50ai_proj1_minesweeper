@@ -252,7 +252,7 @@ class MinesweeperAI():
         self.knowledge = new_knowledge
 
 
-    def updateKnowledgeTillSteadyState(self)
+    def boolean updateKnowledgeTillSteadyState(self)
                 new_sentences = []
         change_happened = False
 
