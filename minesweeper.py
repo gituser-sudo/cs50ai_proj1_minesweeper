@@ -229,7 +229,25 @@ class MinesweeperAI():
                     if new_sentence.cells and new_sentence not in self.knowledge and new_sentence not in new_sentences:
                         new_sentences.append(new_sentence)
 
+
         self.knowledge.extend(new_sentences)
+
+        # Check all sentences:
+        # If number of cells equals number of mines, mark all as mines
+        for sentence in self.knowledge:
+            if len(sentence.cells) == sentence.count:
+                for cell in sentence.cells.copy():
+                    self.mark_mine(cell)
+             self.knowledge.remove(sentence)
+
+        # If number of mines is 0, mark all as safe
+        for sentence in self.knowledge:
+            if sentence.count == 0:
+                for cell in sentence.cells.copy():
+                    self.mark_safe(cell)
+
+             self.knowledge.remove(sentence)
+
 
     def make_safe_move(self):
         """
