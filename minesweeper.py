@@ -111,10 +111,11 @@ class Sentence():
         #     if (i, j) in self.known_mines:
         #         known_mines_cells.add((i, j))
 
-        if self.cells.len == count:
+        if len(self.cells) == self.count:
             return self.cells
 
         return None
+
 
     def known_safes(self):
         """
@@ -125,7 +126,7 @@ class Sentence():
         #     if (i, j) in self.known_safes:
         #         known_safe_cells.add((i, j))
 
-        if count == 0:
+        if self.count == 0:
             return self.cells
 
         return None
