@@ -94,8 +94,7 @@ class Sentence():
     def __init__(self, cells, count):
         self.cells = set(cells)
         self.count = count
-        self.known_mines = set()
-        self.known_safes = set()
+
 
     def __eq__(self, other):
         return self.cells == other.cells and self.count == other.count
@@ -112,7 +111,10 @@ class Sentence():
         #     if (i, j) in self.known_mines:
         #         known_mines_cells.add((i, j))
 
-        return self.known_mines
+        if self.cells.len == count
+            return self.cells
+
+        return None
 
     def known_safes(self):
         """
@@ -123,7 +125,10 @@ class Sentence():
         #     if (i, j) in self.known_safes:
         #         known_safe_cells.add((i, j))
 
-        return self.known_safes
+        if count == 0
+            return self.cells
+
+        return None
 
     def mark_mine(self, cell):
         """
