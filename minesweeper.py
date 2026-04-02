@@ -111,7 +111,7 @@ class Sentence():
         #     if (i, j) in self.known_mines:
         #         known_mines_cells.add((i, j))
 
-        if self.cells.len == count
+        if self.cells.len == count:
             return self.cells
 
         return None
@@ -125,7 +125,7 @@ class Sentence():
         #     if (i, j) in self.known_safes:
         #         known_safe_cells.add((i, j))
 
-        if count == 0
+        if count == 0:
             return self.cells
 
         return None
