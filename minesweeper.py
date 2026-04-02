@@ -114,7 +114,7 @@ class Sentence():
         if len(self.cells) == self.count:
             return self.cells
 
-        return None
+        return set()
 
 
     def known_safes(self):
@@ -129,7 +129,7 @@ class Sentence():
         if self.count == 0:
             return self.cells
 
-        return None
+        return set()
 
     def mark_mine(self, cell):
         """
@@ -140,7 +140,6 @@ class Sentence():
             self.cells.remove(cell)
             self.count = self.count - 1
 
-        self.known_mines.add(cell)
 
     def mark_safe(self, cell):
         """
@@ -150,8 +149,6 @@ class Sentence():
 
         if cell in self.cells:
             self.cells.remove(cell)
-
-        self.known_safes.add(cell)
 
 
 class MinesweeperAI():
